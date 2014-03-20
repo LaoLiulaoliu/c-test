@@ -1,3 +1,5 @@
+/* 同一个stack frame下面的变量分配完全可以随意，正着反着乱序都无所谓，也可能根本就没分配空间，只存在寄存器里 */
+
 #include <stdio.h>
 int main(int argc, char *argv[])
 {
