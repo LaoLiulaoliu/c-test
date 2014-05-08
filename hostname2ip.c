@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
     //convert the Internet host address from numbers-and-dots notation into binary data in network byte order.
 	if ((addr.s_addr = inet_addr(argv[1])) == -1)
 	{
-        //if the "argv[1]" is not a IPv4 address in standard dot notation.It is a host name,or an IPv6 address in colon,or sth.
+        // If the "argv[1]" is not a IPv4 address in standard dot notation.
+        // It is a host name,or an IPv6 address in colon,or sth.
 		if (!(host_ent = gethostbyname(argv[1])))
 		{
 			printf("Error occur!\n");
@@ -36,10 +37,7 @@ int main(int argc, char *argv[])
         }
 	}
     else
-    {
-        // addr.s_addr is unsigned int, network byte ordered(big endian) 
         printf("%u, %s\n", addr.s_addr, inet_ntoa(addr));
-    }
 
 	return 0;
 }
