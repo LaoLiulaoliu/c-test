@@ -1,26 +1,40 @@
 #include <stdio.h>
 
-void foo1(int *pointer)
+/* 指针变量environ，它指向的是包含所有的环境变量的一个列表 */
+extern char **environ;
+
+void printarg(int argc, char *argv[])
 {
-	*pointer = 9;
+    int i;
+    /* argv[0] -> ./a.out */
+    for (i = 0; i < argc; i++)
+        printf("argv[%i]=%s\n", i, argv[i]);
+    printf("\n");
 }
 
-int global = 5;
-void foo2(int **doublePointer)
+void printenv()
 {
-	*doublePointer = &global;
+    char ** var;
+    for (var = environ; *var != NULL; ++var)
+        printf("%s\n", *var);
+    printf("\n");
 }
 
-int main()
+
+void different_type_pointer()
 {
-	int i = 10;
-	int *ip = &i;
+    int a = 97; 
+    char *p = (char *)&a;
+    if (*p == *(char *)&a)
+        printf("%c,%d\n", *p, *p); //a,97
+}
 
-	foo1(ip);
-    printf("i: %d, ip: %d\n", i, *ip);
+int main(int argc, char *argv[])
+{
+    printarg(argc, argv);
+    printenv();
 
-	foo2(&ip);//i is still 9, ip is pointing to "global" now
-    printf("i: %d, ip: %d\n", i, *ip);
+    different_type_pointer();
 
-	return 0;
+    return 0;
 }

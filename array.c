@@ -1,39 +1,27 @@
 #include <stdio.h>
 
-int index_arrayname()
+int index_array()
 {
     int a[5];
-    int n;
-    printf("Please input words:");
-    for(n=0;n<5;n++)
-        scanf("%d",&a[n]);
-    printf("\n");
-    for(n=0;n<5;n++)
-    {
-        printf("%d\n",a[n]); // index method
-        printf("%d\n",*(a+n)); // array name method
-    }
-    printf("\n");
-    return 0;
-}
+    int *p, n;
 
-int pointer()
-{
-    int a[5];
-    int *p,n;
     printf("Please input words:");
-    for(n=0;n<5;n++)
-        scanf("%d",&a[n]);
+    for(n=0; n<5; n++)
+        scanf("%d", &a[n]);
     printf("\n");
-    for(p=a;p<(a+10);p++)
-        printf("%d\n",*p);
+
+    for(n=0; n<7; n++)
+        printf("%d, %d\n", a[n], *(a+n));
     printf("\n");
+
+    for(p=a; p<(a+7); p++)
+        printf("%d\n", *p);
+
     return 0;
 }
 
 int main()
 {
-	//index_arrayname();
-    pointer();
+	index_array();
     return 0;
 }
