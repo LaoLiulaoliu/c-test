@@ -34,10 +34,13 @@ int main()
                       {4,5,6},
                       {7,8,9}
                     };
+    int (*pp)[3] = arr;
+    pp++;
+    printf("\n sth: %d\n", *(*pp+3)); // 7
     printf("\n%d, %d\n", arr[0][1] * arr[1][2], array_pointer_add(arr)); // 12, 45
 
 	char b[10] = "china\0cc";
-	printf("%d %d %s\n", strlen(b), sizeof(b), b);
+	printf("%lu %lu %s\n", strlen(b), sizeof(b), b);
 
 	return 0;
 }
