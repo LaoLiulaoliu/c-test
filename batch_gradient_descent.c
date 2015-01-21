@@ -2,14 +2,14 @@
 
 int main(void)
 {
-    int m = 4, n = 2, max_iteration = 5000;
+    int m = 4, n = 3, max_iteration = 5000;
     float loss = 1000.0; /* initialize a big loss */
 
-    float matrix[4][2] = {{1, 4}, {2, 5}, {5, 1}, {4, 2}};
+    float matrix[4][3] = {{1, 1, 4}, {1, 2, 5}, {1, 5, 1}, {1, 4, 2}};
     float result[4] = {19, 26, 19, 20};
-    float theta[2] = {2, 3};     /* initialized theta {2, 3}, model theta is {3, 4} */
-    float error_sum[2] = {0, 0};
-    float learning_rate = 0.0001; /* leaning_rate must be small enough */
+    float theta[3] = {1, 2, 3};     /* initialized theta {1, 2, 3}, model theta is {0, 3, 4} */
+    float error_sum[3] = {0, 0, 0};
+    float learning_rate = 0.0002; /* leaning_rate must be small enough */
 
     for(int iteration = 0; iteration < max_iteration && loss > 0.0001; ++iteration)
     {
@@ -26,7 +26,7 @@ int main(void)
             theta[j] += learning_rate * (error_sum[j]);
         }
 
-        printf("\niteration: %d; theta: %f, %f; ", iteration, theta[0], theta[1]);
+        printf("\niteration: %d; theta: %f, %f, %f; ", iteration, theta[0], theta[1], theta[2]);
 
         loss = 0.0;
         for(int i = 0; i < m; ++i) {
