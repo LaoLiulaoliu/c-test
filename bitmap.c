@@ -7,7 +7,7 @@
 
 int *apply_memory(size_t size)
 {
-    size_t number_int = size / (sizeof(int) * 8) + 1;
+    size_t number_int = (size - 1) / (sizeof(int) * 8) + 1;
     int *block = (int *)malloc(sizeof(int) * number_int);
     if (NULL == block)
         perror("malloc failed.");
